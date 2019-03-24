@@ -1,10 +1,10 @@
 import os
 import csv
-
+from collections import Counter
 # Correy
 # Khan
 # Li
-# O'tooley
+# O'Tooley
 ccount = 0
 kcount = 0
 lcount = 0
@@ -24,6 +24,10 @@ ccount = 0
 kcount = 0
 lcount = 0
 ocount = 0
+polldic = Counter(clist)
+print (len(clist))
+
+
 
 for i in range(len(clist)):
 
@@ -36,7 +40,7 @@ for i in range(len(clist)):
     elif clist[i] == "O'Tooley":
         ocount = ocount + 1
 
-print (kcount, ccount, lcount, ocount)
+print (kcount+ccount+lcount+ocount)
         # print(str(kcount))
         # for row in csvreader:
         #     if  is 'Khan':
