@@ -1,6 +1,9 @@
 import os
 import csv
 from collections import Counter
+def percentage(a,b):
+    return round(a/b*100,2)
+
 # Correy
 # Khan
 # Li
@@ -9,8 +12,6 @@ ccount = 0
 kcount = 0
 lcount = 0
 ocount = 0
-def percentage(a,b):
-    return round(a/b*100,2)
 
 clist = []
 
@@ -34,8 +35,17 @@ cpercent = percentage(ccount,totalvotes)
 lpercent = percentage(lcount,totalvotes)
 opercent = percentage(ocount,totalvotes)
 winner = max(polldic, key=lambda key: polldic[key])
-print(f"{totalvotes},{kcount},{ccount},{lcount},{ocount}")
-print(f"{kpercent}%,{cpercent}%,{lpercent},{opercent}%, {winner}")
+
+print("Election Results")
+print("-"*26)
+print(f'Total Votes: {totalvotes}')
+print("-"*26)
+print(f'Kahn: {kpercent}00% ({kcount})')
+print(f'Correy: {cpercent}00% ({ccount})')
+print(f'Kahn: {lpercent}00% ({lcount})')
+print(f"O'Tooley: {opercent}00% ({ocount})")
+print("-"*26)
+print(f'Winner = {winner}')
 print("-"*26)
         # print(str(kcount))
         # for row in csvreader:
