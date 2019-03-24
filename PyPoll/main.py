@@ -34,8 +34,9 @@ cpercent = percentage(ccount,totalvotes)
 lpercent = percentage(lcount,totalvotes)
 opercent = percentage(ocount,totalvotes)
 winner = max(polldic, key=lambda key: polldic[key])
-
+print(f"{totalvotes},{kcount},{ccount},{lcount},{ocount}")
 print(f"{kpercent}%,{cpercent}%,{lpercent},{opercent}%, {winner}")
+print("-"*26)
         # print(str(kcount))
         # for row in csvreader:
         #     if  is 'Khan':
