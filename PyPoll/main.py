@@ -9,6 +9,8 @@ ccount = 0
 kcount = 0
 lcount = 0
 ocount = 0
+def percentage(a,b):
+    return round(a/b*100,2)
 
 clist = []
 
@@ -20,27 +22,20 @@ with open(csvpath, newline='') as csvfile:
     header = next(csvreader)
     for row in csvreader:
         clist.append(row[2])
-ccount = 0
-kcount = 0
-lcount = 0
-ocount = 0
 polldic = Counter(clist)
-print (len(clist))
+totalvotes =  (len(clist))
 
+kcount = polldic["Khan"]
+ccount = polldic["Correy"]
+lcount = polldic["Li"]
+ocount = polldic["O'Tooley"]
+kpercent = percentage(kcount,totalvotes)
+cpercent = percentage(ccount,totalvotes)
+lpercent = percentage(lcount,totalvotes)
+opercent = percentage(ocount,totalvotes)
+winner = max(polldic, key=lambda key: polldic[key])
 
-
-for i in range(len(clist)):
-
-    if clist[i] == "Khan":
-        kcount = kcount + 1
-    elif clist[i] == "Correy":
-        ccount = ccount + 1
-    elif clist[i] == "Li":
-        lcount = lcount + 1
-    elif clist[i] == "O'Tooley":
-        ocount = ocount + 1
-
-print (kcount+ccount+lcount+ocount)
+print(f"{kpercent}%,{cpercent}%,{lpercent},{opercent}%, {winner}")
         # print(str(kcount))
         # for row in csvreader:
         #     if  is 'Khan':
