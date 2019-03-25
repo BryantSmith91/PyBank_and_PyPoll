@@ -26,38 +26,37 @@ with open(csvpath, newline='') as csvfile:
     for row in csvreader:
         v2 = row[1]
         clist.append(row[1])
-        total = total + int(row[1])
-        if float(v1) <= difference(v2, v1):
-            maxdif = float(v2)
+        total += int(row[1])
+        if int(v2)-int(v1) > int(maxdif):
+            maxdif = int(v2)
             maxdifmo = str(row[0])
             diflist.append(difference(v2,v1))
             v1 = row[1]
-        elif float(v1) >= difference(v2,v1):
-            mindif = float(v2)
-            mindifmo = str(row[0])
-            diflist.append(difference(v2,v1))
-            v1 = row[1]
+        # elif mindif > difference(v2,v1):
+        #     mindif = int(v2)
+        #     mindifmo = str(row[0])
+        #     diflist.append(difference(v2,v1))
+        #     v1 = row[1]
         else:
             v1 = row[1]
+            diflist.append(difference(v2,v1))
 
 
-        # Broken here or the function is broken idk.
 
-        ########## elif difference(int(row[1])) < mindif:
-        ##########     mindif = difference(int(row[1]))
-        ##########     mindifmo = row[0]
-        ##########     diflist.append(difference(row[1]))
-        ########## else:
-        ##########     diflist.append(difference(row[1]))
+
 print(maxdif,maxdifmo)
+print(avgdif)
+# print(mindif,mindifmo)
 
-totalmoney = Counter(clist)
+# totalmoney = Counter(clist)
 totalmonths = len(clist)
 
-print("Financial Analysis")
-print("-"*28)
-print("Total Months: "+str(totalmonths))
-print("Total: $"+str(total))
+totaldif = sum(diflist)
+avgdif = int(totaldif/totalmonths)
+# print("Financial Analysis")
+# print("-"*28)
+# print("Total Months: "+str(totalmonths))
+# print("Total: $"+str(total))
 # print("Average Change: $"+str())
 # print("Greatest Increase in Profits: "+str()+" ($"+str()+")")
 # print("Greatest Decrease in Profits: "+str()+" ($"+str()+")")
