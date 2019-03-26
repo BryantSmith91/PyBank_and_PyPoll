@@ -11,44 +11,64 @@ def difference(a, b):
 # csvpath = os.path.join('..','PyBank','budget_data.csv')
 csvpath = "C:/Users/bryan/Desktop/BootCampStuff/Homework/HW_03_Python/PyBank/budget_data.csv"
 
-#setting list for counter
+#initalizing lists and variables
 clist = []
+diflist = []
 v1 = 0
 v2 = 0
 maxdif = 0
 mindif = 0
 total = 0
-diflist = []
-# opens CSV file, sets delimiter and appends results to a list
+
+# opens CSV file, sets delimiter and skips header
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter =',')
     next(csvreader, None)
+
+# here is where the magic happens! for each row in csvreader
     for row in csvreader:
+        
+        # v2 is set equal to the current active spot in the row
         v2 = row[1]
+
+        # current spot is appended to a list (clist)
         clist.append(row[1])
+
+        # row is added to running total
         total += int(row[1])
+
+        # making a list for the difference of current cell and previous cell
         diflist.append(difference(v2,v1))
-        if difference(v2,v1) > float(maxdif):
+
+        # if difference of current cell and previous cell is greater than maxdif
+        if difference(v2,v1) > int(maxdif):
             maxdif = difference(v2,v1)
             maxdifmo = str(row[0])
-            # diflist.append(difference(v2,v1))
             v1 = row[1]
-        elif difference(v2,v1) < float(mindif):
+
+        # if the prior section doesnt run this checks to see if the difference is
+        # less than the current minimum difference
+        elif difference(v2,v1) < int(mindif):
             mindif = difference(v2,v1)
             mindifmo = str(row[0])
-            # diflist.append(difference(v2,v1))
             v1 = row[1]
+
+        # if neither prior section runs this runs
         else:
             v1 = row[1]
 
+# deletes the first item in diflist as there is no difference at the start
 del diflist[0]
+
+# checks length of clist and sets totalmonths equal to it
 totalmonths = len(clist)
-totaldif = sum(diflist)
-avgdif = round(float(totaldif/(totalmonths-1)),2)
-# print(totalmonths,totaldif,avgdif)
+
+# finds average difference by putting sum of differences over amount of differences
+avgdif = round(float(sum(diflist)/len(diflist)),2)
 
 
 
+# printing output to terminal
 print("Financial Analysis")
 print("-"*28)
 print("Total Months: "+str(totalmonths))
