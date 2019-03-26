@@ -8,7 +8,7 @@ def difference(a, b):
     return round(int(a) - int(b), 2)
 
 #setting csv path
- csvpath = os.path.join('..','PyBank','budget_data.csv')
+ csvpath = os.path.join('budget_data.csv')
 
 
 #initalizing lists and variables

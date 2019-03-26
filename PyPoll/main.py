@@ -18,7 +18,7 @@ def percentage(a,b):
 clist = []
 
 #setting csv path
-csvpath = os.path.join('..','PyPoll','election_data.csv')
+csvpath = os.path.join('election_data.csv')
 
 # opens CSV file, sets delimiter and appends results to a list
 with open(csvpath, newline='') as csvfile:
