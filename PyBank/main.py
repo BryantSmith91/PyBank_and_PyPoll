@@ -8,8 +8,8 @@ def difference(a, b):
     return round(int(a) - int(b), 2)
 
 #setting csv path
-# csvpath = os.path.join('..','PyBank','budget_data.csv')
-csvpath = "C:/Users/bryan/Desktop/BootCampStuff/Homework/HW_03_Python/PyBank/budget_data.csv"
+ csvpath = os.path.join('..','PyBank','budget_data.csv')
+
 
 #initalizing lists and variables
 clist = []
@@ -27,7 +27,7 @@ with open(csvpath, newline='') as csvfile:
 
 # here is where the magic happens! for each row in csvreader
     for row in csvreader:
-        
+
         # v2 is set equal to the current active spot in the row
         v2 = row[1]
 
